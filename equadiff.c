@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <math.h>
 //Resolution y'(x)+y(x)=0 y(0)=1 intervalle [0,10]
-//VA TE FAIRE POUSSIERER PAR UNE SUPERNOVAE
 
 //Appel des fonctions
 double Euler(double a, double b, double y0, double n,double h,double k);
