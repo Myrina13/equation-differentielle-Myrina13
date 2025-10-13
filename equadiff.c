@@ -38,7 +38,7 @@ int main(){
 	printf("valeur y avec rk4 : %.20lf \n",yrk4);
 	
 	//Rentre dans un fichier les valeurs des erreurs des methodes pour des valeurs de pas h differentes
-	for (h=1;h>=1e-4;h=h/1.1){//h*=0.9
+	for (h=1;h>=1e-4;h=h/2){//h*=0.9
 	ye=1;
 	yh=1;
 	yrk4=1;
