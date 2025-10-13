@@ -24,7 +24,7 @@ int main(){
 	FILE *erreur;
 	erreur=fopen("erreurequadiff.txt","w");
 	
-	//Rentre dans un fichier pour un h fixe les valeurs des methodes
+	//Rentre dans un fichier pour un h fixe les valeurs des methodes pour tracer y=f(x)
 	for (int k=1;k<=n;k++){
 		ye=Euler(a, b, ye, n, h, k);
 		yh=Heun(a, b, yh, n, h, k);
@@ -39,13 +39,19 @@ int main(){
 	printf("valeur y avec rk4 : %.20lf \n",yrk4);
 	
 	//Rentre dans un fichier les valeurs des erreurs des methodes pour des valeurs de pas h differentes
-	for (double h=1;h>=1e-4;h=h-0.0001){
+	for (h=1;h>=1e-4;h=h/1.1){//h*=0.9
+	ye=1;
+	yh=1;
+	yrk4=1;
+	n=(b-a)/h;
 	for (int k=1;k<=n;k++){
 		ye=Euler(a, b, ye, n, h, k);
 		yh=Heun(a, b, yh, n, h, k);
 		yrk4=RK4(a, b, yrk4, n, h, k);
-		fprintf(erreur,"%.20lf %.20lf %.20lf %.20lf \n",h,fabs(ytheo-ye),fabs(ytheo-yh),fabs(ytheo-yrk4));
-	}}
+		
+	}
+	fprintf(erreur,"%.20lf %.20lf %.20lf %.20lf \n",h,fabs(ytheo-ye),fabs(ytheo-yh),fabs(ytheo-yrk4));
+	}
 	
 	fclose(fichier);
 	fclose(erreur);
